@@ -18,8 +18,8 @@ namespace Pizzas.Models
         public int IdPate { get; set; }
 
         [Required(ErrorMessage = "Vous devez sélectionner entre 2 et 5 ingrédients.")]
-        //[MaxLength(5, ErrorMessage = "Vous devez sélectionner au minimum 2 ingrédients.")]
-        //[MinLength(2, ErrorMessage = "Vous devez sélectionner au maximum 5 ingrédients.")]
+        [MaxLength(5, ErrorMessage = "Vous devez sélectionner au minimum 2 ingrédients.")]
+        [MinLength(2, ErrorMessage = "Vous devez sélectionner au maximum 5 ingrédients.")]
         [Display(Name = "Ingrédients")]
         public List<int> IdIngredients { get; set; }
     }
