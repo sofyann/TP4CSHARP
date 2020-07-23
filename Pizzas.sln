@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30309.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pizzas", "Pizzas\Pizzas.csproj", "{FDE30077-E869-4B5B-8282-633296FD3F12}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{981E36FA-6F1C-48F0-8045-A2287919DB40}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database", "Database\Database.csproj", "{DD171681-37D1-4A7D-8CFE-18F797830F2F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FDE30077-E869-4B5B-8282-633296FD3F12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDE30077-E869-4B5B-8282-633296FD3F12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDE30077-E869-4B5B-8282-633296FD3F12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDE30077-E869-4B5B-8282-633296FD3F12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{981E36FA-6F1C-48F0-8045-A2287919DB40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{981E36FA-6F1C-48F0-8045-A2287919DB40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{981E36FA-6F1C-48F0-8045-A2287919DB40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{981E36FA-6F1C-48F0-8045-A2287919DB40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD171681-37D1-4A7D-8CFE-18F797830F2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD171681-37D1-4A7D-8CFE-18F797830F2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD171681-37D1-4A7D-8CFE-18F797830F2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD171681-37D1-4A7D-8CFE-18F797830F2F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {117F4E44-DE99-4757-8E3B-3FAEA610F08D}
+	EndGlobalSection
+EndGlobal

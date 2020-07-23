@@ -1,0 +1,30 @@
+﻿@model Pizzas.Models.PizzaViewModel
+
+@{
+    ViewBag.Title = "Details";
+    ViewBag.enabled = false;
+}
+
+<h2>Details</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Modifier la pizza</h4>
+        <hr />
+        @Html.Partial("_Pizza", Model)
+        @Html.HiddenFor(m => m.Pizza.Id)
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" disabled />
+            </div>
+        </div>
+    </div>
+}
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
