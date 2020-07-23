@@ -9,7 +9,7 @@ namespace Database
 {
     public abstract class FakeDb<T> where T : Entity
     {
-        private List<T> datas;
+        protected List<T> datas;
         private int idSeq;
         public FakeDb (List<T> datas)
         {

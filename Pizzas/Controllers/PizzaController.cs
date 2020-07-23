@@ -38,8 +38,14 @@ namespace Pizzas.Controllers
         {
             try
             {
-                new PizzaViewModelManager().savePVM(pvm);
-                return RedirectToAction("Index");
+                pvm = new PizzaViewModelManager().savePVM(pvm, ModelState);
+                if (pvm == null)
+                {
+                    return RedirectToAction("Index");
+                } else
+                {
+                    return View(pvm);
+                }
             }
             catch
             {
@@ -59,8 +65,15 @@ namespace Pizzas.Controllers
         {
             try
             {
-                new PizzaViewModelManager().savePVM(pvm);
-                return RedirectToAction("Index");
+                pvm = new PizzaViewModelManager().savePVM(pvm, ModelState);
+                if (pvm == null)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return View(pvm);
+                }
             }
             catch
             {

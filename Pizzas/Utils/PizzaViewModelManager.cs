@@ -1,10 +1,12 @@
 ﻿using Database;
 using Entities;
+using Microsoft.Ajax.Utilities;
 using Pizzas.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace Pizzas.Utils
 {
@@ -27,12 +29,50 @@ namespace Pizzas.Utils
             return pvm;
         }
 
-        public void savePVM(PizzaViewModel pvm)
+        public PizzaViewModel savePVM(PizzaViewModel pvm, ModelStateDictionary ModelState)
         {
             pvm = populatePVM(pvm);
-            pvm.Pizza.Ingredients = pvm.Ingredients.Where(i => pvm.IdIngredients.Contains(i.Id)).Select(i => i).ToList();
-            pvm.Pizza.Pate = pvm.Pates.Where(i => i.Id == pvm.IdPate).Select(i => i).FirstOrDefault();
+            if (!ModelState.IsValid)
+            {
+                return pvm;
+            }
+
+            if (PizzaFakeDb.Instance.getPizzaByName(pvm.Pizza.Nom) != null)
+            {
+                ModelState.AddModelError("Pizza.Nom", "Il existe déjà une pizza possédant se nom");
+            }
+            
+            var ingredients = pvm.Ingredients.Where(i => pvm.IdIngredients.Contains(i.Id)).Select(i => i).ToList();
+            if (ingredients.Count() == 0)
+            {
+                ModelState.AddModelError("IdIngredients", "Vous devez sélectionner entre 2 et 5 ingrédients présents dans la liste.");
+            }
+
+            var pizzaWithSameIngredients = PizzaFakeDb.Instance.GetAll().FirstOrDefault(p => ingredients.All(p.Ingredients.Contains));
+            if (pizzaWithSameIngredients != null)
+            {
+                ModelState.AddModelError("IdIngredients", $"La pizza \"{pizzaWithSameIngredients.Nom}\" possède déjà ces ingrédients.");
+            } else
+            {
+                pvm.Pizza.Ingredients = ingredients;
+            }
+
+            var pate = pvm.Pates.Where(i => i.Id == pvm.IdPate).Select(i => i).FirstOrDefault();
+            if (pate == null)
+            {
+                ModelState.AddModelError("idPate", "Vous devez une pate présente dans la liste.");
+            } else
+            {
+                pvm.Pizza.Pate = pate;
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return pvm;
+            }
+
             PizzaFakeDb.Instance.Set(pvm.Pizza);
+            return null;
         }
 
         private PizzaViewModel populatePVM(PizzaViewModel pvm)
